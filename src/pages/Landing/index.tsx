@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 function Landing(){
@@ -12,9 +13,9 @@ function Landing(){
           <a href="" className="trade">
             Fazer troca
           </a>
-          <a href="" className="trades-history">
+          <Link to="/trades-history" className="trades-history">
             Histórico de trocas
-          </a>
+          </Link>
         </div>
         <span className="total-trades">
           Total de 200 trocas já realizadas

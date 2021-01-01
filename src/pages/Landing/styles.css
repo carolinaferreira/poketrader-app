@@ -59,19 +59,19 @@
 }
 
 .buttons-container a.trade{
-    background: var(--color-primary-lighter);
-}
-
-.buttons-container a.trades-history{
     background: var(--color-secondary);
 }
 
+.buttons-container a.trades-history{
+    background: var(--color-primary-lighter);
+}
+
 .buttons-container a.trade:hover{
-    background: var(--color-primary-light);
+    background: var(--color-secondary-dark);
 }
 
 .buttons-container a.trades-history:hover{
-    background: var(--color-secondary-dark);
+    background: var(--color-primary-light);
 }
 
 .buttons-container a img{

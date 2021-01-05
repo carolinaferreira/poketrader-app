@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
-const backIcon = require("../../assets/images/icons/back.svg") as string;
 interface PageHeaderProps{
     title: string;
     description?: string;
@@ -12,7 +11,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         <header className="page-header">
         <div className="top-bar-container">
             <Link to="/">
-                <img src={backIcon} alt="Voltar"/>
+                Voltar
             </Link>
         </div>
         <div className="header-content">

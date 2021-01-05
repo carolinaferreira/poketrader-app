@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import PageHeader from '../../components/PageHeader';
 import AsyncSelect from 'react-select/async';
 import Input from '../../components/Input';
@@ -15,8 +15,8 @@ library.add(faTrashAlt)
 function TradeForm(){
     const history = useHistory();
 
-    const [player_1_name, setName] = useState('');
-    const [player_2_name] = useState('');
+    const [player_1_name, setName1] = useState('');
+    const [player_2_name, setName2] = useState('');
 
     const [offerPlayer1, setOffer1] = useState<Array<any>>([]);
     const [offerPlayer2, setOffer2] = useState<Array<any>>([]);
@@ -31,7 +31,7 @@ function TradeForm(){
             console.log(offerPlayer1.length);
             setOffer1([...offerPlayer1, pokemons[0].value]);
         } else {
-            console.log('chegou no limite!');
+            alert('Limite de 6 pokemons por oferta antigido!')
         }
     }
 
@@ -40,7 +40,7 @@ function TradeForm(){
             console.log(offerPlayer2);
             setOffer2([...offerPlayer2, pokemons[0].value]);
         } else {
-            console.log('chegou no limite!');
+            alert('Limite de 6 pokemons por oferta antigido!')
         }
     }
     
@@ -49,11 +49,20 @@ function TradeForm(){
         callback(mapOptions(records))
     }
 
-    function handleDelete(pokemon: any){
-        console.log(pokemon);
+    function handleDeleteOffer1(index: number){
+        offerPlayer1.splice(index, 1);
+        console.log(offerPlayer1);
+        setOffer1(offerPlayer1);
     }
     
+    function handleDeleteOffer2(index: number){
+        offerPlayer2.splice(index, 1);
+        console.log(offerPlayer2);
+        setOffer1(offerPlayer2);
+    }
+
     function handleCreateTrade(e: FormEvent){
+        console.log('entrou na função!');
         e.preventDefault();
 
         api.post('trades', {
@@ -88,7 +97,7 @@ function TradeForm(){
                             name="player_1_name" 
                             label="Nome"
                             value={player_1_name}
-                            onChange={(e) => {setName(e.target.value)}}    
+                            onChange={(e) => {setName1(e.target.value)}}    
                         />
                         <br/>
                         <legend>Adicione pokemons</legend>
@@ -108,12 +117,14 @@ function TradeForm(){
                             return (
                                 <table>
                                     <tbody>
-                                        <td><b>{i+=1}:</b> {pokemon}</td>
-                                        <td>
-                                            <span onClick={() => handleDelete(pokemon)}>
-                                            <FontAwesomeIcon icon="trash-alt"/>
-                                            </span>
-                                        </td>
+                                        <tr>
+                                            <td>{pokemon}</td>
+                                            <td>
+                                                <span onClick={() => handleDeleteOffer1(i)}>
+                                                <FontAwesomeIcon icon="trash-alt"/>
+                                                </span>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             )
@@ -125,7 +136,7 @@ function TradeForm(){
                             name="player_2_name" 
                             label="Nome"
                             value={player_2_name}
-                            onChange={(e) => {setName(e.target.value)}}    
+                            onChange={(e) => {setName2(e.target.value)}}    
                         />
                         <legend>Adicione pokemons</legend>
                         <AsyncSelect  
@@ -137,9 +148,28 @@ function TradeForm(){
                             }
                             isMulti 
                         />
+                        <br/>
+                        <legend>Oferta atual</legend>
+                        <br/>
+                        {offerPlayer2.map(function(pokemon, i){
+                            return (
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>{pokemon}</td>
+                                            <td>
+                                                <span onClick={() => handleDeleteOffer2(i)}>
+                                                <FontAwesomeIcon icon="trash-alt"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            )
+                        })}
                     </fieldset>
                     <footer>
-                        <button type="button">
+                        <button type="submit">
                             Fazer troca!
                         </button>
                     </footer>

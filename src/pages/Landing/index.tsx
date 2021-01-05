@@ -17,9 +17,6 @@ function Landing(){
             Histórico de trocas
           </Link>
         </div>
-        <span className="total-trades">
-          Total de 200 trocas já realizadas
-        </span>
       </div>
     </div>
   )

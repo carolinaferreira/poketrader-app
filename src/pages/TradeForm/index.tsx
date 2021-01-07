@@ -31,16 +31,16 @@ function TradeForm(){
             console.log(offerPlayer1.length);
             setOffer1([...offerPlayer1, pokemons[0].value]);
         } else {
-            alert('Limite de 6 pokemons por oferta antigido!')
+            alert('Limite de 6 pokemons para oferta 1 antigido!')
         }
     }
 
     const setPokemons2 = (pokemons: any) => {
-        if (offerPlayer1.length <= 5) {
+        if (offerPlayer2.length <= 5) {
             console.log(offerPlayer2);
             setOffer2([...offerPlayer2, pokemons[0].value]);
         } else {
-            alert('Limite de 6 pokemons por oferta antigido!')
+            alert('Limite de 6 pokemons para oferta 2 antigido!')
         }
     }
     

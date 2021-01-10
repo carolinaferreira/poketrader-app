@@ -22,25 +22,23 @@ function TradeForm(){
     const [offerPlayer2, setOffer2] = useState<Array<any>>([]);
 
     const mapOptions = (pokemons: Array<Pokemon>) => {
-        return pokemons.map(pokemon => ({label: pokemon.name, value: pokemon.name}));
+        return pokemons.map(pokemon => ({label: pokemon.name+"("+pokemon.base_experience+" XP)", value: pokemon.name}));
     
     }
     
     const setPokemons1 = (pokemons: any) => {
         if (offerPlayer1.length <= 5) {
-            console.log(offerPlayer1.length);
             setOffer1([...offerPlayer1, pokemons[0].value]);
         } else {
-            alert('Limite de 6 pokemons para oferta 1 antigido!')
+            alert('Limite de 6 pokemons para oferta 1 atingido!')
         }
     }
 
     const setPokemons2 = (pokemons: any) => {
         if (offerPlayer2.length <= 5) {
-            console.log(offerPlayer2);
             setOffer2([...offerPlayer2, pokemons[0].value]);
         } else {
-            alert('Limite de 6 pokemons para oferta 2 antigido!')
+            alert('Limite de 6 pokemons para oferta 2 atingido!')
         }
     }
     

@@ -100,7 +100,7 @@ function TradeForm(){
                             onChange={(e) => {setName1(e.target.value)}}    
                         />
                         <br/>
-                        <legend>Adicione pokemons</legend>
+                        <legend>Pesquise e adicione pokemons</legend>
                         <AsyncSelect  
                             loadOptions={loadOptions}
                             value={[]}
@@ -138,7 +138,7 @@ function TradeForm(){
                             value={player_2_name}
                             onChange={(e) => {setName2(e.target.value)}}    
                         />
-                        <legend>Adicione pokemons</legend>
+                        <legend>Pesquise e adicione pokemons</legend>
                         <AsyncSelect  
                             loadOptions={loadOptions}
                             value={[]}
